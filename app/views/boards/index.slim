@@ -2,23 +2,27 @@
   .row.d-flex.justify-content-center
     .col-md-6.col-lg-5.col-xl-4
       - if @boards.present?
+        = link_to "Create", new_board_path, class: "board", class: 'btn btn-secondary'
+
         - @boards.each do |board|
           .card.mb-3
-            .row.g-0
-              .col-md-1.col-sm-2
-                .card-header.d-flex.justify-content-center.flex-column style="width: 100%; height: 100%; border: none;"
+            .card-header
+                h5.card-title
+                  = link_to "#{board.name}", board, class: "board"
 
-              .col
-                .card-body
-                  h5.card-title
-                    = link_to "#{board.name}", board, class: "board"
-                  h6.card-subtitle.mb-2.text-body-secondary
-                    | by #{board.email}
-                  p.card-text 
-                    = board.created_at.strftime("%B %d, %Y")
+            .card-body
+              h6.card-subtitle.mb-2.text-body-secondary
+                | by #{board.email}
+              p.card-text 
+                = board.created_at.strftime("%B %d, %Y")
       - else
         .card.mb-3
           .card-body
             p.card-text 
               | No boards yet. 
               = link_to "Create one now!", new_board_path, class: "board"
+      
+      - if params[:view_all]
+        = link_to 'View Most Recent 10', boards_path, class: 'btn btn-primary'
+      - else
+        = link_to 'View All Boards', boards_path(view_all: true), class: 'btn btn-primary'

@@ -2,7 +2,11 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:show]
 
   def index
-    @boards = Board.order(created_at: :desc).limit(10)
+    @boards = if params[:view_all]
+                Board.all.order(created_at: :desc)
+              else
+                Board.order(created_at: :desc).limit(10)
+              end
   end
 
   def show; end
