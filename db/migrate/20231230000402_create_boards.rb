@@ -4,7 +4,7 @@ class CreateBoards < ActiveRecord::Migration[7.1]
       t.string :name
       t.integer :column
       t.integer :row
-      t.integer :mines_count
+      t.integer :mines_count, default: 0
       t.string :email
       t.text :data
 

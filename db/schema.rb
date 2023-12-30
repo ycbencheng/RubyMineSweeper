@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_000402) do
     t.string "name"
     t.integer "column"
     t.integer "row"
-    t.integer "mines_count"
+    t.integer "mines_count", default: 0
     t.string "email"
     t.text "data"
     t.datetime "created_at", null: false
