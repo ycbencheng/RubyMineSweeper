@@ -1,5 +1,5 @@
 class Board < ApplicationRecord
-  serialize :data
+  serialize :board_data, Array, coder: YAML
   validates :name, presence: true
   validates :column, :row, :mines_count, numericality: { only_integer: true, greater_than: 0 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
