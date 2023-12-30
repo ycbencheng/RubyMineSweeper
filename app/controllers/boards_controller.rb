@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit, :update]
+  before_action :set_board, only: [:show]
 
   def index
     @boards = Board.order(created_at: :desc).limit(10)
@@ -17,17 +17,10 @@ class BoardsController < ApplicationController
 
     if @board.save!
       redirect_to @board
-      flash[:success] = "Board #{board.name} was successfully created."
+      flash[:success] = "Board #{@board.name} was successfully created."
     else
       render :new
     end
-  end
-
-  def edit; end
-
-  def update
-    @board.update(board_params)
-    redirect_to @board
   end
 
   private
