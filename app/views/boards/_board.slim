@@ -7,14 +7,13 @@
   small.card-subtitle.text-body-secondary
     = "#{board&.created_at&.to_date}"
 .card-text
-  p row
-  = board.row
-  p column
-  = board.column
-  p mines_count
-  = board.mines_count
+  p row #{board.row}
+  p column #{board.column}
+  p mines_count #{board.mines_count}
   p board
-  = board.data
+  - board.data.each do |row| 
+    = row.join(' ')
+    br
 
 div style="float: right"
   = link_to "List of Boards", boards_path, class: 'btn btn-outline-secondary', style: "margin-right: 1em"

@@ -1,5 +1,5 @@
 class Board < ApplicationRecord
-  serialize :data, Array, coder: YAML
+  serialize :data, type: Array, coder: YAML
   validates :name, presence: true, uniqueness: true
   validates :column, :row, numericality: { only_integer: true, greater_than: 1 }
   validates :mines_count, numericality: { only_integer: true, greater_than: 0 }
@@ -13,10 +13,7 @@ class Board < ApplicationRecord
   private
 
   def initialize_board
-    rows = Array.new(row) 
-    columns =  Array.new(column, 0) 
-
-    self.data = rows.fill { columns }
+    self.data = Array.new(row) { Array.new(column, 0) }
   end
 
   def set_mines
