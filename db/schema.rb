@@ -16,8 +16,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_000402) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
-    t.integer "width"
-    t.integer "height"
+    t.integer "column"
+    t.integer "row"
     t.integer "mines_count"
     t.string "email"
     t.text "data"
