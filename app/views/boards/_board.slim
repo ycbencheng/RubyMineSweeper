@@ -1,0 +1,20 @@
+.d-flex.justify-content-between.align-items-center
+  h4 style="margin: 0" #{board.name}
+
+.d-flex
+  small.card-subtitle style="margin-right: 1rem;"
+    | by #{board.email}
+  small.card-subtitle.text-body-secondary
+    = "#{board&.created_at&.to_date}"
+.card-text
+  p row
+  = board.row
+  p column
+  = board.column
+  p mines_count
+  = board.mines_count
+  p board
+  = board.data
+
+div style="float: right"
+  = link_to "List of Boards", boards_path, class: 'btn btn-outline-secondary', style: "margin-right: 1em"

@@ -1,0 +1,19 @@
+.row.d-flex.justify-content-center
+  .col-md-6.col-lg-5
+    = render 'layouts/error_message', data: board
+
+    = form_with(model: board, data: { turbo: false }) do |f|
+      = f.label :email, class: 'form-label'
+      = f.text_field :email, class: "form-control mb-2 border border-primary-subtle"
+      = f.label :board_name, class: 'form-label'
+      = f.text_field :name, class: "form-control mb-2 border border-primary-subtle"
+      = f.label :column, class: 'form-label'
+      = f.number_field :column, value:"2", class: "form-control mb-2 border border-primary-subtle"
+      = f.label :row, class: 'form-label'
+      = f.number_field :row, value:"2", class: "form-control mb-2 border border-primary-subtle"
+      = f.label :total_mines_count, class: 'form-label'
+      = f.number_field :mines_count, value:"1", class: "form-control mb-2 border border-primary-subtle"
+
+      div style="float: right"
+        = link_to "Cancel", board, class: 'btn btn-outline-secondary', style: "margin-right: 1em"
+        = f.submit "Save", class: 'btn btn-primary'

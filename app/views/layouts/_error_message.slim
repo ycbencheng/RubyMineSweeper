@@ -1,0 +1,7 @@
+- if data&.errors&.any?
+  .alert.alert-dismissible.fade.show class="alert-danger" role="alert"
+    h6 
+      | Unable to continue due to the following error(s).
+    ul
+      - data.errors.each do |error|
+        li = error.full_message

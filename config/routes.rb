@@ -7,4 +7,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "boards" => "boards#index", as: :boards
+  get "boards/new" => "boards#new", as: :new_board
+  get "boards/:id" => "boards#show", as: :board
+  post "boards" => "boards#create"
+
+  root "boards#index"
 end
