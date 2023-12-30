@@ -16,3 +16,9 @@
                     | by #{board.email}
                   p.card-text 
                     = board.created_at.strftime("%B %d, %Y")
+      - else
+        .card.mb-3
+          .card-body
+            p.card-text 
+              | No boards yet. 
+              = link_to "Create one now!", new_board_path, class: "board"
