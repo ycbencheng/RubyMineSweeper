@@ -11,9 +11,22 @@
   p column #{board.column}
   p mines_count #{board.mines_count}
   p board
-  - board.data.each do |row| 
-    = row.join(' ')
-    br
+
+  .container.mt-4
+    table.table.table-bordered
+      thead
+        tr
+          th scope="col" style="width: 50px; height: 50px" #
+          - board.column.times do |i|
+            th scope="col" style="width: 50px; height: 50px" = i+1
+      tbody
+        - board.data.each_with_index do |row, index|
+          tr
+            th scope="row" = index+1
+            - row.each do |cell| 
+              
+              td class="#{cell == 1 ? 'table-danger' : 'table-light'}" style="width: 50px; height: 50px"
+                = cell == 1 ? '💣' : ' '
 
 div style="float: right"
   = link_to "List of Boards", boards_path, class: 'btn btn-outline-secondary', style: "margin-right: 1em"
