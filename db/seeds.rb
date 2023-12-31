@@ -9,10 +9,13 @@
 #   end
 
 
-(1..11).each do |num|
-  Board.create!(name: "Board #{num+1}", 
-                row: num+1, 
-                column: num+1, 
-                mines_count: num, 
-                email: "test@test.com")
+(1..11).map do |num|
+  board = Board.new(name: "Board #{num}", 
+                    row: num+1, 
+                    column: num+1, 
+                    mines_count: num,
+                    email: "test@test.com")
+  board.data = Array.new(num+1) { Array.new(num+1, 0) }
+  board.generate! 
+  board.save!
 end
